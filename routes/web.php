@@ -19,3 +19,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/book/create', 'BookController@index')->name('book.index');
 Route::post('/book/store', 'BookController@store')->name('book.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
