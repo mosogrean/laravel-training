@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DashboardTest extends TestCase
+class BookTest extends TestCase
 {
     use RefreshDatabase;
     
@@ -20,10 +20,13 @@ class DashboardTest extends TestCase
     public function testGuestInsertBook()
     {
         // arrange
-        $this->get(route('dashboard'))->assertSuccessful();
+        $this->get(route('book.index'))
+            ->assertViewIs('book.create')
+            ->assertSuccessful()
+            ->assertStatus(200);
 
         // act
-        $this->post(route('dashboard.store', [
+        $this->post(route('book.store', [
             '_token' => \Session::token(),
             'writer' => 'mos',
             'book_name' => 'laravel',

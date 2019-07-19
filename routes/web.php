@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::post('/dashboard/store', 'DashboardController@store')->name('dashboard.store');
+
+Route::get('/book/create', 'BookController@index')->name('book.index');
+Route::post('/book/store', 'BookController@store')->name('book.store');

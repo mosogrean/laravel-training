@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view('dashboard', compact('books'));
-//        return view('dashboard', ['books' => $books]); 
+        return view('book.create');
     }
 
     /**
@@ -37,7 +35,13 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-
+        Book::create([
+            'writer' => $request->writer,
+            'book_name' => $request->book_name,
+            'price' => $request->price,
+            'type' => $request->type,
+        ]);
+        return redirect(route('dashboard'));
     }
 
     /**
